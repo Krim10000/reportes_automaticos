@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<title> {{titulo}} </title>
+<center><h1> {{titulo}} </h1></center>
+
+<p> </p>
+<h1> Complete la siguiente información: </h1>
+<!--
+<a href="{% url "menu" %}"> Volver </a>
+COMENTARIO -->
+
+{% load crispy_forms_tags%}
+
+{% block content %}
+    {% csrf_token %}
+    {% crispy form %}
+
+{% endblock %}
+
+<p> </p>
+
+
+
+
+<p> <a href="{% url "menu" %}"> Volver </a></p>

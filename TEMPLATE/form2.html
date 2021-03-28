@@ -1,0 +1,21 @@
+
+
+<title>{{titulo}}</title>
+<h1> Ingrese informacion</h1>
+<h1> Ingrese informacion</h1>
+<h1> Ingrese informacion</h1>
+{% if submitted %}
+<p class="success">
+Your message was submitted successfully. Thank you.
+</p>
+
+{% else %}
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Guardar</button>
+    </form>
+<p> </p>
+
+
+<a href="{% url "menu" %}"> Volver </a>
+  <!-- COMENTARIO  -->

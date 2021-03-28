@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<h1> {{titulo}}</h1>
+<title>{{titulo}}</title>
+
+
+<p>{{Institucion}} </p>
+
+<br>
+
+<hr>
+
+{% block content %}
+<ul>
+
+     {% for EST in estu %}
+     <li>
+    <p>  <a href="{{ EST.get_absolute_url }}">  {{ EST.Rut }} </a>&nbsp; {{EST.Apellido_P}} <b> </b>{{EST.Apellido_M}} <b> </b>{{EST.Nombres}} &nbsp; &nbsp; &nbsp; &nbsp;
+      <a href="/delete{{ EST.get_absolute_url }}"
+      onClick="return confirm('¿Seguro que quieres borrar a {{EST.get_absolute_url}}?');"> Borrar
+    </a></p>
+
+     </li>
+     {% endfor %}
+
+
+
+
+</ul>
+{% endblock %}
+
+<hr/>
+<p class="text-center">
+ <button type="button"><a href="URL1" style="text-decoration: none;"> Registre a un nuevo estudiante </a></button>
+</p>
+
+
+<p class="text-center">
+ <button type="button"><a href="exportar1" style="text-decoration: none;"> Exportar estudiantes </a></button>
+</p>
+
+<br>
+<br>
+<br>
+
+<br>
+
+<a href="{% url "menu" %}"> Inicio </a>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<h1> {{titulo}}</h1>
+<title>{{titulo}}</title>
+<br>
+
+  <p>Institución:      {{Institucion}}</p>
+
+
+
+
+
+
+
+
+<form method="POST">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <p><button type="submit">Editar</button></p>
+</form>
+
+
+
+
+
+
+<a href="{% url "menu" %}"> Volver </a>

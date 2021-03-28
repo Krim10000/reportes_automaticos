@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+
+<title> {{titulo}} </title>
+<center> <h1>  {{titulo}}  </h1> </center>
+<br>
+<p> </p>
+<!--<h1> Complete la siguiente información: </h1>
+
+<a href="{% url "menu" %}"> Volver </a>
+COMENTARIO -->
+
+<p>Institucion: {{Institucion}} </p>
+{% block content %}
+
+{% if submitted %}
+<p class="success">
+Your message was submitted successfully. Thank you.
+</p>
+
+
+{% else %}
+
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Guardar</button>
+    </form>
+
+
+{% endif %}
+
+{% endblock %}
+
+
+<a href="{% url "menu" %}"> Volver </a>
+  <!-- COMENTARIO  -->

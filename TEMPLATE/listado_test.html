@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<h1> {{titulo}}</h1>
+<title>{{titulo}}</title>
+
+<p> </p>
+
+{% block content %}
+<ul>
+
+     {% for test in gato %}
+     <li>
+       <p>
+       <a href="/test{{ test.get_absolute_url }}"> Descargar </a> &nbsp; &nbsp;
+       <a href="/delete{{ test.get_absolute_url }}"
+       onClick="return confirm('¿Seguro que quieres borrar a {{test.get_absolute_url}}?');"> Borrar
+     </a> &nbsp; &nbsp;    {{ test.Año }} &nbsp; {{test.Semestre}} <b> </b><a href="{{ test.get_absolute_url }}">{{test.Rut}}</a> <b> </b> &nbsp; &nbsp; &nbsp; &nbsp;
+    </p>
+
+     </li>
+     {% endfor %}
+
+
+
+
+
+</ul>
+{% endblock %}
+
+<p></p>
+<br>
+<a href="EVALUAV2"> Batería Psicopedagógica EVALÚA VERSIÓN 2.0  </a>
+<p></p>
+
+<p></p>
+<br>
+<a href="EVALUAV3"> Batería Psicopedagógica EVALÚA VERSIÓN 3.0  </a>
+<p></p>
+
+<a href="{% url "menu" %}"> Inicio </a>
