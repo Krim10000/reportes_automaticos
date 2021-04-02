@@ -73,7 +73,7 @@ class NUEVO_EVA2_00(LoginRequiredMixin,CreateView):
 def Listado_E2_00(request):
     user = request.user
     titulo = "LISTADO DE PRUEBAS EVALÚA-0 VERSIÓN CHILENA 2.0"
-    gato = Modelo_EVALUA2_00.objects.filter(user=user).order_by("-Año")
+    gato = Modelo_EVALUA2_00.objects.filter(user=user).order_by("-Fecha")
     context_object_name = 'E2_00'
     return render(request, 'listado_test.html', {'gato': gato, "titulo":titulo })
 
@@ -127,7 +127,7 @@ class NUEVO_EVA2_01(LoginRequiredMixin,CreateView):
 def Listado_E2_01(request):
     user = request.user
     titulo = "LISTADO DE PRUEBAS EVALÚA-1 VERSIÓN CHILENA 2.0"
-    gato = Modelo_EVALUA2_01.objects.filter(user=user).order_by("-Año")
+    gato = Modelo_EVALUA2_01.objects.filter(user=user).order_by("-Fecha")
     context_object_name = 'E2_01'
     return render(request, 'listado_test.html', {'gato': gato, "titulo":titulo })
 
@@ -181,7 +181,7 @@ class NUEVO_EVA2_02(LoginRequiredMixin,CreateView):
 def Listado_E2_02(request):
     user = request.user
     titulo = "LISTADO DE PRUEBAS EVALÚA-2 VERSIÓN CHILENA 2.0"
-    gato = Modelo_EVALUA2_02.objects.filter(user=user).order_by("-Año")
+    gato = Modelo_EVALUA2_02.objects.filter(user=user).order_by("-Fecha")
     context_object_name = 'E2_02'
     return render(request, 'listado_test.html', {'gato': gato, "titulo":titulo })
 
@@ -235,7 +235,7 @@ class NUEVO_EVA2_03(LoginRequiredMixin,CreateView):
 def Listado_E2_03(request):
     user = request.user
     titulo = "LISTADO DE PRUEBAS EVALÚA-3 VERSIÓN CHILENA 2.0"
-    gato = Modelo_EVALUA2_03.objects.filter(user=user).order_by("-Año")
+    gato = Modelo_EVALUA2_03.objects.filter(user=user).order_by("-Fecha")
     context_object_name = 'E2_03'
     return render(request, 'listado_test.html', {'gato': gato, "titulo":titulo })
 
@@ -288,7 +288,7 @@ class NUEVO_EVA2_04(LoginRequiredMixin,CreateView):
 def Listado_E2_04(request):
     user = request.user
     titulo = "LISTADO DE PRUEBAS EVALÚA-4 VERSIÓN CHILENA 2.0"
-    gato = Modelo_EVALUA2_04.objects.filter(user=user).order_by("-Año")
+    gato = Modelo_EVALUA2_04.objects.filter(user=user).order_by("-Fecha")
     context_object_name = 'E2_04'
     return render(request, 'listado_test.html', {'gato': gato, "titulo":titulo })
 
@@ -341,7 +341,7 @@ class NUEVO_EVA2_05(LoginRequiredMixin,CreateView):
 def Listado_E2_05(request):
     user = request.user
     titulo = "LISTADO DE PRUEBAS EVALÚA-5 VERSIÓN CHILENA 2.0"
-    gato = Modelo_EVALUA2_05.objects.filter(user=user).order_by("-Año")
+    gato = Modelo_EVALUA2_05.objects.filter(user=user).order_by("-Fecha")
     context_object_name = 'E2_05'
     return render(request, 'listado_test.html', {'gato': gato, "titulo":titulo })
 
@@ -394,7 +394,7 @@ class NUEVO_EVA2_06(LoginRequiredMixin,CreateView):
 def Listado_E2_06(request):
     user = request.user
     titulo = "LISTADO DE PRUEBAS EVALÚA-6 VERSIÓN CHILENA 2.0"
-    gato = Modelo_EVALUA2_06.objects.filter(user=user).order_by("-Año")
+    gato = Modelo_EVALUA2_06.objects.filter(user=user).order_by("-Fecha")
     context_object_name = 'E2_06'
     return render(request, 'listado_test.html', {'gato': gato, "titulo":titulo })
 
@@ -447,7 +447,7 @@ class NUEVO_EVA2_07(LoginRequiredMixin,CreateView):
 def Listado_E2_07(request):
     user = request.user
     titulo = "LISTADO DE PRUEBAS EVALÚA-7 VERSIÓN CHILENA 2.0"
-    gato = Modelo_EVALUA2_07.objects.filter(user=user).order_by("-Año")
+    gato = Modelo_EVALUA2_07.objects.filter(user=user).order_by("-Fecha")
     context_object_name = 'E2_07'
     return render(request, 'listado_test.html', {'gato': gato, "titulo":titulo })
 
@@ -500,7 +500,7 @@ class NUEVO_EVA2_08(LoginRequiredMixin,CreateView):
 def Listado_E2_08(request):
     user = request.user
     titulo = "LISTADO DE PRUEBAS EVALÚA-8 VERSIÓN CHILENA 2.0"
-    gato = Modelo_EVALUA2_08.objects.filter(user=user).order_by("-Año")
+    gato = Modelo_EVALUA2_08.objects.filter(user=user).order_by("-Fecha")
     context_object_name = 'E2_08'
     return render(request, 'listado_test.html', {'gato': gato, "titulo":titulo })
 
@@ -553,7 +553,7 @@ class NUEVO_EVA2_09(LoginRequiredMixin,CreateView):
 def Listado_E2_09(request):
     user = request.user
     titulo = "LISTADO DE PRUEBAS EVALÚA-9 VERSIÓN CHILENA 2.0"
-    gato = Modelo_EVALUA2_09.objects.filter(user=user).order_by("-Año")
+    gato = Modelo_EVALUA2_09.objects.filter(user=user).order_by("-Fecha")
     context_object_name = 'E2_09'
     return render(request, 'listado_test.html', {'gato': gato, "titulo":titulo })
 
@@ -606,7 +606,7 @@ class NUEVO_EVA2_10(LoginRequiredMixin,CreateView):
 def Listado_E2_10(request):
     user = request.user
     titulo = "LISTADO DE PRUEBAS EVALÚA-10 VERSIÓN CHILENA 2.0"
-    gato = Modelo_EVALUA2_10.objects.filter(user=user).order_by("-Año")
+    gato = Modelo_EVALUA2_10.objects.filter(user=user).order_by("-Fecha")
     context_object_name = 'E2_10'
     return render(request, 'listado_test.html', {'gato': gato, "titulo":titulo })
 

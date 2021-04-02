@@ -26,7 +26,6 @@ def EV09EXP2(request, pk):
     apellido_P = test.Rut.Apellido_P
     apellido_M = test.Rut.Apellido_M
     fecha_nac = test.Rut.Fecha_nac
-    domicilio = test.Rut.Domicilio
     observaciones = test.Rut.Observaciones
 
     #######################################################################
@@ -40,7 +39,7 @@ def EV09EXP2(request, pk):
     colegio=dpro.Institucion
     ###################################################
     semestre= test.Semestre
-    año = test.Año
+
     #evaluador =test.Evaluador
     curso = test.Curso
     escolaridad = test.Escolaridad
@@ -472,6 +471,7 @@ def EV09EXP2(request, pk):
 
 
     response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    año = fecha.strftime("%Y")
 
     filename = "EV09_" +str(año)+"_" + str(semestre)+"_" +str(rut) + ".xlsx"
 

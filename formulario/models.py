@@ -19,16 +19,77 @@ class Modelo_Info_Pro(models.Model):
 
 
 ############################################################################################
+class  region(models.TextChoices):
+    R_1= "Arica y Parinacota","Arica y Parinacota"
+    R_2= "Tarapacá","Tarapacá"
+    R_3= "Antofagasta","Antofagasta"
+    R_4= "Atacama","Atacama"
+    R_5= "Coquimbo","Coquimbo"
+    R_6="Valparaíso", "Valparaíso"
+    R_7="Metropolitana de Santiago", "Metropolitana de Santiago"
+    R_8="Libertador General Bernardo O’Higgins","Libertador General Bernardo O’Higgins"
+    R_9= "Maule", "Maule"
+    R_10= "Ñuble", "Ñuble"
+    R_11= "Biobío", "Biobío"
+    R_12= "La Araucanía", "La Araucanía"
+    R_13= "Los Ríos", "Los Ríos"
+    R_14= "Los Lagos", "Los Lagos"
+    R_15= "Aysén del General Carlos Ibáñez del Campo", "Aysén del General Carlos Ibáñez del Campo"
+    R_16= "Magallanes y la Antártica Chilena", "Magallanes y la Antártica Chilena"
+
+
+class  diagnostico(models.TextChoices):
+    D_1= "Sin diagnóstico","Sin diagnóstico"
+    D_2= "TDA","TDA"
+    D_3= "TDAH","TDAH"
+    D_4= "DEA","DEA"
+    D_5= "DI","DI"
+    D_6="FIL", "FIL"
+
+############################################################################################
 class Modelo_Info_Per(models.Model):
     Rut=models.CharField(max_length=10, unique= True)
     Nombres =models.CharField(max_length=50)
     Apellido_P =models.CharField(max_length=50,) #label= "Apellido paterno"
     Apellido_M =models.CharField(max_length=50, null=True, blank=True)
     Fecha_nac = models.DateField()
-    Domicilio =models.CharField(max_length=50, null=True, blank=True)
+
+    telefono_estudiante = models.CharField(max_length=20, null=True, blank=True)
+    correo_estudiante = models.CharField(max_length=20, null=True, blank=True)
+    Id_genero =models.CharField(max_length=20, null=True, blank=True)
+    diagnostico =models.CharField(max_length=50, choices=diagnostico.choices, default=diagnostico.D_1)
+    salud= models.TextField(blank = True, null=True)
+    socieco= models.TextField(blank = True, null=True)
+
     Observaciones =models.TextField(blank = True, null=True)
+
+    Region_Domicilio1 = models.CharField(max_length= 50, choices=region.choices, default=region.R_7)
+    Comuna_Domicilio1=models.CharField(max_length=50, null=True, blank=True)
+    Direccion_Domicilio1 =models.CharField(max_length=50, null=True, blank=True)
+
+    Region_Domicilio2 = models.CharField(max_length= 50, choices=region.choices, default=region.R_7)
+    Comuna_Domicilio2=models.CharField(max_length=50, null=True, blank=True)
+    Direccion_Domicilio2=models.CharField(max_length=50, null=True, blank=True)
+
+    Nombre_apoderado1 =models.CharField(max_length=100, null=True, blank=True)
+    telefono_apoderado1 = models.CharField(max_length=20, null=True, blank=True)
+    correo_apoderado1 = models.CharField(max_length=30, null=True, blank=True)
+
+    Nombre_apoderado2 =models.CharField(max_length=100, null=True, blank=True)
+    telefono_apoderado2 = models.CharField(max_length=20, null=True, blank=True)
+    correo_apoderado2 = models.CharField(max_length=30, null=True, blank=True)
+
+    Nombre_apoderado3 =models.CharField(max_length=100, null=True, blank=True)
+    telefono_apoderado3 = models.CharField(max_length=20, null=True, blank=True)
+    correo_apoderado3 = models.CharField(max_length=30, null=True, blank=True)
+
+
+
+
+
     user=models.CharField(max_length= 150,)
     Institucion =models.CharField(max_length= 150,default= "")
+
 
 
 
@@ -40,24 +101,9 @@ class Modelo_Info_Per(models.Model):
 
     def get_absolute_url(self):
         return f"/estudiante/{self.Rut }/"
+
 #############################################################################################
 #############################################################################################
-class Modelo_EVALUA_11(models.Model):
-
-    Rut = models.ForeignKey(Modelo_Info_Per,on_delete= models.DO_NOTHING, to_field ="Rut")
-    Semestre = models.IntegerField()
-    Año = models.IntegerField()
-
-    Pregunta_1= models.IntegerField()
-    Pregunta_2= models.IntegerField()
-    Pregunta_3= models.IntegerField()
-
-
-    class Meta:
-            ordering = ["Año"]
-
-    def __str__(self):
-        return '%s-%s %s ' % (self.Año, self.Semestre, self.Rut, )
 ############################################
 
 #############################################
@@ -91,11 +137,15 @@ class Modelo_EVALUA_08(models.Model):
     #agrega limit_choices_to
 
     Semestre = models.IntegerField( default = semestre)
-    Año = models.IntegerField(default= datetime.now().year )
+
 
     Curso=models.CharField(max_length=3)
     Escolaridad=models.TextField(max_length= 250)
     Fecha= models.DateField(default=datetime.now)
+
+    sesiones=models.IntegerField(default=1)
+    conducta=models.TextField(max_length= 1000,null=True, blank=True)
+    antecedentes=models.TextField(max_length= 1000,null=True, blank=True)
     #Evaluador= models.TextField(max_length= 100, default= "Carlos Diego Riquelme González")
     #I ATENCION CONCENTRACION
     I_ACIERTO= models.IntegerField(default=0)
@@ -208,10 +258,10 @@ class Modelo_EVALUA_08(models.Model):
 
 
     class Meta:
-            ordering = ["Año"]
+            ordering = ["Fecha"]
 
     def __str__(self):
-        return '%s-%s %s ' % (self.Año, self.Semestre, self.Rut, )
+        return '%s-%s %s ' % (self.Fecha, self.Semestre, self.Rut, )
 
     def get_absolute_url(self):
         return f"/E08/{self.pk}/"
@@ -226,11 +276,14 @@ class Modelo_EVALUA_09(models.Model):
     #agrega limit_choices_to
 
     Semestre = models.IntegerField( default = semestre)
-    Año = models.IntegerField(default= datetime.now().year )
 
     Curso=models.CharField(max_length=3)
     Escolaridad=models.TextField(max_length= 250)
     Fecha= models.DateField(default=datetime.now)
+
+    sesiones=models.IntegerField(default=1)
+    conducta=models.TextField(max_length= 1000,null=True, blank=True)
+    antecedentes=models.TextField(max_length= 1000,null=True, blank=True)
     #Evaluador= models.TextField(max_length= 100, default= "Carlos Diego Riquelme González")
     #I ATENCION CONCENTRACION
     I_ACIERTO= models.IntegerField(default=0)
@@ -332,10 +385,10 @@ class Modelo_EVALUA_09(models.Model):
 
 
     class Meta:
-            ordering = ["Año"]
+            ordering = ["Fecha"]
 
     def __str__(self):
-        return '%s-%s %s ' % (self.Año, self.Semestre, self.Rut, )
+        return '%s-%s %s ' % (self.Fecha, self.Semestre, self.Rut, )
 
     def get_absolute_url(self):
         return f"/E09/{self.pk}/"
@@ -350,11 +403,15 @@ class Modelo_EVALUA_10(models.Model):
     #agrega limit_choices_to
 
     Semestre = models.IntegerField( default = semestre)
-    Año = models.IntegerField(default= datetime.now().year )
+
 
     Curso=models.CharField(max_length=3)
     Escolaridad=models.TextField(max_length= 250)
     Fecha= models.DateField(default=datetime.now)
+
+    sesiones=models.IntegerField(default=1)
+    conducta=models.TextField(max_length= 1000,null=True, blank=True)
+    antecedentes=models.TextField(max_length= 1000,null=True, blank=True)
     #Evaluador= models.TextField(max_length= 100, default= "Carlos Diego Riquelme González")
     #I ATENCION CONCENTRACION
     I_ACIERTO= models.IntegerField(default=0)
@@ -453,10 +510,10 @@ class Modelo_EVALUA_10(models.Model):
 
 
     class Meta:
-            ordering = ["Año"]
+            ordering = ["Fecha"]
 
     def __str__(self):
-        return '%s-%s %s ' % (self.Año, self.Semestre, self.Rut, )
+        return '%s-%s %s ' % (self.Fecha, self.Semestre, self.Rut, )
 
     def get_absolute_url(self):
         return f"/E10/{self.pk}/"
@@ -477,12 +534,16 @@ class Modelo_EVALUA2_00(models.Model): #LISTO :)
 
 
     Semestre = models.IntegerField( default = semestre)
-    Año = models.IntegerField(default= datetime.now().year )
+
 
     Curso=models.CharField(max_length=3)
     Escolaridad=models.TextField(max_length= 250)
     Fecha= models.DateField(default=datetime.now)
 
+
+    sesiones=models.IntegerField(default=1)
+    conducta=models.TextField(max_length= 1000,null=True, blank=True)
+    antecedentes=models.TextField(max_length= 1000,null=True, blank=True)
     #I CAPACIDADES COGNITIVAS
     #A CLASIFICACION
     IA1_ACIERTO= models.IntegerField(default=0)
@@ -576,10 +637,10 @@ class Modelo_EVALUA2_00(models.Model): #LISTO :)
     IIIC4_ACIERTO= models.IntegerField(default=0)
 
     class Meta:
-            ordering = ["Año"]
+            ordering = ["Fecha"]
 
     def __str__(self):
-        return '%s-%s %s ' % (self.Año, self.Semestre, self.Rut, )
+        return '%s-%s %s ' % (self.Fecha, self.Semestre, self.Rut, )
 
     def get_absolute_url(self):
         return f"/E2_00/{self.pk}/"
@@ -606,11 +667,15 @@ class Modelo_EVALUA2_01(models.Model):
 
 
     Semestre = models.IntegerField( default = semestre)
-    Año = models.IntegerField(default= datetime.now().year )
+
 
     Curso=models.CharField(max_length=3)
     Escolaridad=models.TextField(max_length= 250)
     Fecha= models.DateField(default=datetime.now)
+
+    sesiones=models.IntegerField(default=1)
+    conducta=models.TextField(max_length= 1000,null=True, blank=True)
+    antecedentes=models.TextField(max_length= 1000,null=True, blank=True)
 
     #I BASES DEL RAZONAMIENTO
     I_ACIERTO= models.IntegerField(default=0)
@@ -659,10 +724,10 @@ class Modelo_EVALUA2_01(models.Model):
 
 
     class Meta:
-            ordering = ["Año"]
+            ordering = ["Fecha"]
 
     def __str__(self):
-        return '%s-%s %s ' % (self.Año, self.Semestre, self.Rut, )
+        return '%s-%s %s ' % (self.Fecha, self.Semestre, self.Rut, )
 
     def get_absolute_url(self):
         return f"/E2_01/{self.pk}/"
@@ -675,12 +740,15 @@ class Modelo_EVALUA2_02(models.Model):
 
 
     Semestre = models.IntegerField( default = semestre)
-    Año = models.IntegerField(default= datetime.now().year )
+
 
     Curso=models.CharField(max_length=3)
     Escolaridad=models.TextField(max_length= 250)
     Fecha= models.DateField(default=datetime.now)
 
+    sesiones=models.IntegerField(default=1)
+    conducta=models.TextField(max_length= 1000,null=True, blank=True)
+    antecedentes=models.TextField(max_length= 1000,null=True, blank=True)
 
 #I BASES DEL RAZONAMIENTO
     #IA PENSAMIENTO ANALÓGICO
@@ -745,10 +813,10 @@ class Modelo_EVALUA2_02(models.Model):
 
 
     class Meta:
-            ordering = ["Año"]
+            ordering = ["Fecha"]
 
     def __str__(self):
-        return '%s-%s %s ' % (self.Año, self.Semestre, self.Rut, )
+        return '%s-%s %s ' % (self.Fecha, self.Semestre, self.Rut, )
 
     def get_absolute_url(self):
         return f"/E2_02/{self.pk}/"
@@ -761,11 +829,15 @@ class Modelo_EVALUA2_03(models.Model):
 
 
     Semestre = models.IntegerField( default = semestre)
-    Año = models.IntegerField(default= datetime.now().year )
+
 
     Curso=models.CharField(max_length=3)
     Escolaridad=models.TextField(max_length= 250)
     Fecha= models.DateField(default=datetime.now)
+
+    sesiones=models.IntegerField(default=1)
+    conducta=models.TextField(max_length= 1000,null=True, blank=True)
+    antecedentes=models.TextField(max_length= 1000,null=True, blank=True)
 
     #I MEMORIA Y ATENCIÓN
     I_ACIERTO= models.IntegerField(default=0)
@@ -841,10 +913,10 @@ class Modelo_EVALUA2_03(models.Model):
     VIB2_ACIERTO= models.IntegerField(default=0)
 
     class Meta:
-            ordering = ["Año"]
+            ordering = ["Fecha"]
 
     def __str__(self):
-        return '%s-%s %s ' % (self.Año, self.Semestre, self.Rut, )
+        return '%s-%s %s ' % (self.Fecha, self.Semestre, self.Rut, )
 
     def get_absolute_url(self):
         return f"/E2_03/{self.pk}/"
@@ -857,11 +929,15 @@ class Modelo_EVALUA2_04(models.Model):
 
 
     Semestre = models.IntegerField( default = semestre)
-    Año = models.IntegerField(default= datetime.now().year )
+
 
     Curso=models.CharField(max_length=3)
     Escolaridad=models.TextField(max_length= 250)
     Fecha= models.DateField(default=datetime.now)
+
+    sesiones=models.IntegerField(default=1)
+    conducta=models.TextField(max_length= 1000,null=True, blank=True)
+    antecedentes=models.TextField(max_length= 1000,null=True, blank=True)
 
 
     #I MEMORIA Y ATENCIÓN
@@ -939,10 +1015,10 @@ class Modelo_EVALUA2_04(models.Model):
 
 
     class Meta:
-            ordering = ["Año"]
+            ordering = ["Fecha"]
 
     def __str__(self):
-        return '%s-%s %s ' % (self.Año, self.Semestre, self.Rut, )
+        return '%s-%s %s ' % (self.Fecha, self.Semestre, self.Rut, )
 
     def get_absolute_url(self):
         return f"/E2_04/{self.pk}/"
@@ -955,12 +1031,15 @@ class Modelo_EVALUA2_05(models.Model):
 
 
     Semestre = models.IntegerField( default = semestre)
-    Año = models.IntegerField(default= datetime.now().year )
+
 
     Curso=models.CharField(max_length=3)
     Escolaridad=models.TextField(max_length= 250)
     Fecha= models.DateField(default=datetime.now)
 
+    sesiones=models.IntegerField(default=1)
+    conducta=models.TextField(max_length= 1000,null=True, blank=True)
+    antecedentes=models.TextField(max_length= 1000,null=True, blank=True)
 
     #I MEMORIA Y ATENCIÓN
     I_ACIERTO= models.IntegerField(default=0)
@@ -1052,10 +1131,10 @@ class Modelo_EVALUA2_05(models.Model):
 
 
     class Meta:
-            ordering = ["Año"]
+            ordering = ["Fecha"]
 
     def __str__(self):
-        return '%s-%s %s ' % (self.Año, self.Semestre, self.Rut, )
+        return '%s-%s %s ' % (self.Fecha, self.Semestre, self.Rut, )
 
     def get_absolute_url(self):
         return f"/E2_05/{self.pk}/"
@@ -1069,12 +1148,15 @@ class Modelo_EVALUA2_06(models.Model):
 
 
     Semestre = models.IntegerField( default = semestre)
-    Año = models.IntegerField(default= datetime.now().year )
+
 
     Curso=models.CharField(max_length=3)
     Escolaridad=models.TextField(max_length= 250)
     Fecha= models.DateField(default=datetime.now)
 
+    sesiones=models.IntegerField(default=1)
+    conducta=models.TextField(max_length= 1000,null=True, blank=True)
+    antecedentes=models.TextField(max_length= 1000,null=True, blank=True)
 
 
     #I BASES DEL RAZONAMIENTO
@@ -1168,10 +1250,10 @@ class Modelo_EVALUA2_06(models.Model):
 
 
     class Meta:
-            ordering = ["Año"]
+            ordering = ["Fecha"]
 
     def __str__(self):
-        return '%s-%s %s ' % (self.Año, self.Semestre, self.Rut, )
+        return '%s-%s %s ' % (self.Fecha, self.Semestre, self.Rut, )
 
     def get_absolute_url(self):
         return f"/E2_06/{self.pk}/"
@@ -1185,11 +1267,15 @@ class Modelo_EVALUA2_07(models.Model):
 
 
     Semestre = models.IntegerField( default = semestre)
-    Año = models.IntegerField(default= datetime.now().year )
+
 
     Curso=models.CharField(max_length=3)
     Escolaridad=models.TextField(max_length= 250)
     Fecha= models.DateField(default=datetime.now)
+
+    sesiones=models.IntegerField(default=1)
+    conducta=models.TextField(max_length= 1000,null=True, blank=True)
+    antecedentes=models.TextField(max_length= 1000,null=True, blank=True)
 
     #I ATENCION CONCENTRACION
     I_ACIERTO= models.IntegerField(default=0)
@@ -1275,10 +1361,10 @@ class Modelo_EVALUA2_07(models.Model):
 
 
     class Meta:
-            ordering = ["Año"]
+            ordering = ["Fecha"]
 
     def __str__(self):
-        return '%s-%s %s ' % (self.Año, self.Semestre, self.Rut, )
+        return '%s-%s %s ' % (self.Fecha, self.Semestre, self.Rut, )
 
     def get_absolute_url(self):
         return f"/E2_07/{self.pk}/"
@@ -1291,12 +1377,15 @@ class Modelo_EVALUA2_08(models.Model):
 
 
     Semestre = models.IntegerField( default = semestre)
-    Año = models.IntegerField(default= datetime.now().year )
+
 
     Curso=models.CharField(max_length=3)
     Escolaridad=models.TextField(max_length= 250)
     Fecha= models.DateField(default=datetime.now)
 
+    sesiones=models.IntegerField(default=1)
+    conducta=models.TextField(max_length= 1000,null=True, blank=True)
+    antecedentes=models.TextField(max_length= 1000,null=True, blank=True)
 
     #I ATENCION CONCENTRACION
     I_ACIERTO= models.IntegerField(default=0)
@@ -1401,10 +1490,10 @@ class Modelo_EVALUA2_08(models.Model):
 
 
     class Meta:
-            ordering = ["Año"]
+            ordering = ["Fecha"]
 
     def __str__(self):
-        return '%s-%s %s ' % (self.Año, self.Semestre, self.Rut, )
+        return '%s-%s %s ' % (self.Fecha, self.Semestre, self.Rut, )
 
     def get_absolute_url(self):
         return f"/E2_08/{self.pk}/"
@@ -1417,11 +1506,15 @@ class Modelo_EVALUA2_09(models.Model):
 
 
     Semestre = models.IntegerField( default = semestre)
-    Año = models.IntegerField(default= datetime.now().year )
+
 
     Curso=models.CharField(max_length=3)
     Escolaridad=models.TextField(max_length= 250)
     Fecha= models.DateField(default=datetime.now)
+
+    sesiones=models.IntegerField(default=1)
+    conducta=models.TextField(max_length= 1000,null=True, blank=True)
+    antecedentes=models.TextField(max_length= 1000,null=True, blank=True)
 
     #I ATENCION CONCENTRACION
     I_ACIERTO= models.IntegerField(default=0)
@@ -1513,10 +1606,10 @@ class Modelo_EVALUA2_09(models.Model):
 
 
     class Meta:
-            ordering = ["Año"]
+            ordering = ["Fecha"]
 
     def __str__(self):
-        return '%s-%s %s ' % (self.Año, self.Semestre, self.Rut, )
+        return '%s-%s %s ' % (self.Fecha, self.Semestre, self.Rut, )
 
     def get_absolute_url(self):
         return f"/E2_09/{self.pk}/"
@@ -1529,11 +1622,15 @@ class Modelo_EVALUA2_10(models.Model):
 
 
     Semestre = models.IntegerField( default = semestre)
-    Año = models.IntegerField(default= datetime.now().year )
+
 
     Curso=models.CharField(max_length=3)
     Escolaridad=models.TextField(max_length= 250)
     Fecha= models.DateField(default=datetime.now)
+
+    sesiones=models.IntegerField(default=1)
+    conducta=models.TextField(max_length= 1000,null=True, blank=True)
+    antecedentes=models.TextField(max_length= 1000,null=True, blank=True)
 
     #I ATENCION CONCENTRACION
     I_ACIERTO= models.IntegerField(default=0)
@@ -1617,10 +1714,10 @@ class Modelo_EVALUA2_10(models.Model):
 
 
     class Meta:
-            ordering = ["Año"]
+            ordering = ["Fecha"]
 
     def __str__(self):
-        return '%s-%s %s ' % (self.Año, self.Semestre, self.Rut, )
+        return '%s-%s %s ' % (self.Fecha, self.Semestre, self.Rut, )
 
     def get_absolute_url(self):
         return f"/E2_10/{self.pk}/"

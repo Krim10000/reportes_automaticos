@@ -47,7 +47,7 @@ def EV2_00EXP2(request, pk):
 
     ###################################################
     semestre= test.Semestre
-    año = test.Año
+
     #evaluador =test.Evaluador
     curso = test.Curso
     escolaridad = test.Escolaridad
@@ -523,7 +523,7 @@ def EV2_00EXP2(request, pk):
        NVLIIIC = "deficiente"
 
     response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-
+    año = fecha.strftime("%Y")
     filename = EVA0+"_" +str(año)+"_" + str(semestre)+"_" +str(rut) + ".xlsx"
 
     #####response['Content-Disposition'] = 'attachment; filename="INFORME.xls"'

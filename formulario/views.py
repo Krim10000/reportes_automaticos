@@ -508,7 +508,8 @@ def export_users_xls(request):
     response['Content-Disposition'] = 'attachment; filename="Estudiantes.xls"'
 
     wb = xlwt.Workbook(encoding='utf-8')
-    ws = wb.add_sheet('Estudiantes')
+    ws = wb.add_sheet('Estudiantes',cell_overwrite_ok=True)
+
 
     # Sheet header, first row
     row_num = 0
@@ -516,7 +517,39 @@ def export_users_xls(request):
     font_style = xlwt.XFStyle()
     font_style.font.bold = True
 
-    columns = ['Rut', 'Nombres', 'Apellido paterno', 'Apellido materno', ]
+    columns = ['Rut', 'Nombres', 'Apellido paterno', 'Apellido materno', 'Fecha de nacimiento',
+
+                "Teléfono del estudiante",
+                "Correo del estudiante",
+
+                 "Identidad de género del estudiante",
+                 "Diagnóstico del estudiante",
+                "Antecendentes de salud del estudiante",
+                "Situación socioeconómica del estudiante",
+
+                "Observaciones generales",
+
+                "Región del primer domicilio del estudiantes",
+                "Comuna del primer domicilio del estudiantes",
+                "Dirección del primer domicilio del estudiantes",
+
+                "Región del segundo domicilio del estudiantes",
+                "Comuna del segundo domicilio del estudiantes",
+                "Dirección del segundo domicilio del estudiantes",
+
+
+                 "Nombre apoderado N°1",
+                 "Teléfono apoderado N°1",
+                 "Correo apoderado N°1 ",
+
+                "Nombre apoderado N°2",
+                 "Teléfono apoderado N°2",
+                 "Correo apoderado N°2 ",
+
+                "Nombre apoderado N°3",
+                "Teléfono apoderado N°3",
+                "Correo apoderado N°3 ",
+ ]
 
     for col_num in range(len(columns)):
         ws.write(row_num, col_num, columns[col_num], font_style)
@@ -533,7 +566,31 @@ def export_users_xls(request):
 # Observaciones
     user = request.user
     Institucion=Modelo_Info_Pro.objects.get(user=user).Institucion
-    rows = Modelo_Info_Per.objects.filter(Institucion=Institucion).values_list('Rut', 'Nombres', 'Apellido_P', 'Apellido_M')
+
+    #Fecha_nac
+
+    #format2 = "Fecha_nac".add_format({'num_format': 'dd/mm/yy'})
+
+    rows = Modelo_Info_Per.objects.filter(Institucion=Institucion).values_list('Rut', 'Nombres',
+    'Apellido_P', 'Apellido_M', "Fecha_nac" ,"telefono_estudiante","correo_estudiante","Id_genero",
+    "diagnostico","salud","socieco","Observaciones","Region_Domicilio1","Comuna_Domicilio1",
+    "Direccion_Domicilio1","Region_Domicilio2",
+    "Comuna_Domicilio2",
+    "Direccion_Domicilio2",
+
+
+    "Nombre_apoderado1",
+    "telefono_apoderado1",
+    "correo_apoderado1",
+
+    "Nombre_apoderado2",
+    "telefono_apoderado2",
+    "correo_apoderado2",
+
+    "Nombre_apoderado3",
+    "telefono_apoderado3",
+    "correo_apoderado3",)
+
 
     for row in rows:
         row_num += 1
@@ -542,12 +599,25 @@ def export_users_xls(request):
             #ws.write(fila , columna, contenido, font_style)
 
 
+    rows = Modelo_Info_Per.objects.filter(Institucion=Institucion).values_list("Fecha_nac")
+    #dateformat = wb.add_format({'num_format': 'dd/mm/yyyy'})
+
+
+
+
+    date_format = xlwt.XFStyle()
+    date_format.num_format_str = 'dd/mm/yyyy'
+
+    row_num =0
+    #col_num =4
+    for row in rows:
+        row_num += 1
+        for col_num in range(len(row)):
+            ws.write(row_num, 4, row[col_num], date_format)
 
 
     wb.save(response)
     return response
-
-
 ###################################################
 
 ####################################################################################

@@ -44,7 +44,7 @@ def EV2_03EXP2(request, pk):
     profesion =dpro.Profesion
     ###################################################
     semestre= test.Semestre
-    año = test.Año
+
     #evaluador =test.Evaluador
     curso = test.Curso
     escolaridad = test.Escolaridad
@@ -386,6 +386,7 @@ def EV2_03EXP2(request, pk):
 
 
     response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    año = fecha.strftime("%Y")
 
     filename = EVA3+"_" +str(año)+"_" + str(semestre)+"_" +str(rut) + ".xlsx"
 

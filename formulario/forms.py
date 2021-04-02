@@ -13,6 +13,7 @@ from crispy_forms.layout import Submit, Layout, Div, Fieldset, ButtonHolder, HTM
 from crispy_forms.bootstrap import StrictButton
 #from .views import vista_exito
 
+
 ######################################
 #Informacion del profesional
 class Form_Pro(forms.ModelForm):
@@ -30,6 +31,9 @@ class Form_Pro(forms.ModelForm):
 
 
 ##########################################
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
 #Informacion de los estudiantes
 class Form1(forms.ModelForm):
 
@@ -42,12 +46,52 @@ class Form1(forms.ModelForm):
             "Apellido_M": ('Apellido materno'),
             "Fecha_nac": ('Fecha de nacimiento'),
 
+            "telefono_estudiante": ("Teléfono del estudiante"),
+            "correo_estudiante": ("Correo del estudiante"),
+
+            "Id_genero" : ("Identidad de género del estudiante"),
+            "diagnostico": ("Diagnóstico principal del estudiante"),
+            "salud": ("Antecendentes de salud del estudiante"),
+            "socieco": ("Situación socioeconómica del estudiante"),
+
+            "Observaciones" : ("Observaciones generales"),
+
+            "Region_Domicilio1": ("Región del primer domicilio del estudiantes"),
+            "Comuna_Domicilio1": ("Comuna del primer domicilio del estudiantes"),
+            "Direccion_Domicilio1" : ("Dirección del primer domicilio del estudiantes"),
+
+            "Region_Domicilio2": ("Región del segundo domicilio del estudiantes"),
+            "Comuna_Domicilio2": ("Comuna del segundo domicilio del estudiantes"),
+            "Direccion_Domicilio2" : ("Dirección del segundo domicilio del estudiantes"),
+
+
+            "Nombre_apoderado1": ("Nombre apoderado N°1"),
+            "telefono_apoderado1"  : ("Teléfono apoderado N°1"),
+            "correo_apoderado1"  : ("Correo apoderado N°1 "),
+
+            "Nombre_apoderado2": ("Nombre apoderado N°2"),
+            "telefono_apoderado2"  : ("Teléfono apoderado N°2"),
+            "correo_apoderado2"  : ("Correo apoderado N°2 "),
+
+            "Nombre_apoderado3": ("Nombre apoderado N°3"),
+            "telefono_apoderado3"  : ("Teléfono apoderado N°3"),
+            "correo_apoderado3"  : ("Correo apoderado N°3 "),
+
+
+
+
         }
         help_texts = {
             "Rut":("12345678-9"),
             'Fecha_nac': ('DD/MM/AAAA'),
         }
         exclude = ("user","Institucion")
+
+        widgets = { #'Colegio': forms.Textarea(attrs={"rows":1 ,"cols":50}),
+                    #'Escolaridad': forms.Textarea(attrs={"rows":1 ,"cols":50}),
+                    'Fecha_nac': DateInput()
+                    #'Evaluador': forms.Textarea(attrs={"rows":1 ,"cols":50}),
+                    }
 
 class Form_Editar_Estudiante(forms.ModelForm):
 
@@ -60,12 +104,51 @@ class Form_Editar_Estudiante(forms.ModelForm):
             "Apellido_M": ('Apellido materno'),
             "Fecha_nac": ('Fecha de nacimiento'),
 
+            "telefono_estudiante": ("Teléfono del estudiante"),
+            "correo_estudiante": ("Correo del estudiante"),
+
+            "Id_genero" : ("Identidad de género del estudiante"),
+            "diagnostico": ("Diagnóstico principal del estudiante"),
+            "salud": ("Antecendentes de salud del estudiante"),
+            "socieco": ("Situación socioeconómica del estudiante"),
+
+            "Observaciones" : ("Observaciones generales"),
+
+            "Region_Domicilio1": ("Región del primer domicilio del estudiantes"),
+            "Comuna_Domicilio1": ("Comuna del primer domicilio del estudiantes"),
+            "Direccion_Domicilio1" : ("Dirección del primer domicilio del estudiantes"),
+
+            "Region_Domicilio2": ("Región del segundo domicilio del estudiantes"),
+            "Comuna_Domicilio2": ("Comuna del segundo domicilio del estudiantes"),
+            "Direccion_Domicilio2" : ("Dirección del segundo domicilio del estudiantes"),
+
+
+            "Nombre_apoderado1": ("Nombre apoderado N°1"),
+            "telefono_apoderado1"  : ("Teléfono apoderado N°1"),
+            "correo_apoderado1"  : ("Correo apoderado N°1 "),
+
+            "Nombre_apoderado2": ("Nombre apoderado N°2"),
+            "telefono_apoderado2"  : ("Teléfono apoderado N°2"),
+            "correo_apoderado2"  : ("Correo apoderado N°2 "),
+
+            "Nombre_apoderado3": ("Nombre apoderado N°3"),
+            "telefono_apoderado3"  : ("Teléfono apoderado N°3"),
+            "correo_apoderado3"  : ("Correo apoderado N°3 "),
+
+
         }
         help_texts = {
             "Rut":("12345678-9"),
             'Fecha_nac': ('DD/MM/AAAA'),
         }
-        exclude = ("user","Institucion","Rut")        
+        exclude = ("user","Institucion","Rut")
+
+        widgets = { #'Colegio': forms.Textarea(attrs={"rows":1 ,"cols":50}),
+                    #'Escolaridad': forms.Textarea(attrs={"rows":1 ,"cols":50}),
+                    #'Fecha_nac': DateInput()
+                    #'Evaluador': forms.Textarea(attrs={"rows":1 ,"cols":50}),
+                    }
+
 ######################################
 
 

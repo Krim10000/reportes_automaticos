@@ -32,7 +32,7 @@ class FormEVA2_00(forms.ModelForm):
                 HTML(""" <center> DATOS GENERALES </center> """),#Titulo I2-F2
                 HTML("""  <p></p> """), #espacio
 
-                Field("Rut","Semestre","Año", "Curso","Escolaridad","Fecha")),
+                Field("Rut","Semestre","Curso","Escolaridad","Fecha","sesiones","conducta","antecedentes")),
 
                 HTML("""  <p></p> """), #espacio
                 HTML(""" </center> """),#center F2
@@ -190,6 +190,10 @@ class FormEVA2_00(forms.ModelForm):
         exclude = ("user","Institucion")
         labels = {
             'Rut':('Estudiante'),
+            "Semestre":("Número de evaluación"),
+            "sesiones":("N° de sesiones"),
+            "conducta":("Conducta observada"),
+            "antecedentes":("Antecedentes relevantes"),
 
 
             "IA1_ACIERTO": ("Aciertos"),
@@ -268,7 +272,7 @@ class FormEVA2_00(forms.ModelForm):
 ##################################################
 
 
-        widgets : {"Escolaridad": forms.Textarea(attrs={"rows":1 ,"cols":50}),}
+        widgets : {"Escolaridad": forms.Textarea(attrs={"rows":1 ,"cols":4}),}
 
 
 
@@ -287,7 +291,7 @@ class FormEVA2_01(forms.ModelForm):
                 HTML(""" <center> DATOS GENERALES </center> """),#Titulo I2-F2
                 HTML("""  <p></p> """), #espacio
 
-                Field("Rut","Semestre","Año", "Curso","Escolaridad","Fecha")),
+                Field("Rut","Semestre","Curso","Escolaridad","Fecha","sesiones","conducta","antecedentes")),
 
                 HTML("""  <p></p> """), #espacio
                 HTML(""" </center> """),#center F2
@@ -414,6 +418,12 @@ class FormEVA2_01(forms.ModelForm):
         exclude = ("user","Institucion")
         labels = {
             'Rut':('Estudiante'),
+            "Semestre":("Número de evaluación"),
+
+            "sesiones":("N° de sesiones"),
+            "conducta":("Conducta observada"),
+            "antecedentes":("Antecedentes relevantes"),
+
             "I_ACIERTO":("Aciertos"),
             "I_ERROR":("Errores"),
             "I_OMISION":("Omisiones"),
@@ -453,7 +463,7 @@ class FormEVA2_01(forms.ModelForm):
 
 
             }
-        widgets : {"Escolaridad": forms.Textarea(attrs={"rows":1 ,"cols":50}),}
+        widgets : {"Escolaridad": forms.Textarea(attrs={"rows":1 ,"cols":4}),}
 
 
 class FormEVA2_02(forms.ModelForm):
@@ -471,7 +481,7 @@ class FormEVA2_02(forms.ModelForm):
                 HTML(""" <center> DATOS GENERALES </center> """),#Titulo I2-F2
                 HTML("""  <p></p> """), #espacio
 
-                Field("Rut","Semestre","Año", "Curso","Escolaridad","Fecha")),
+                Field("Rut","Semestre","Curso","Escolaridad","Fecha","sesiones","conducta","antecedentes")),
 
                 HTML("""  <p></p> """), #espacio
                 HTML(""" </center> """),#center F2
@@ -611,6 +621,11 @@ class FormEVA2_02(forms.ModelForm):
         exclude = ("user","Institucion")
         labels = {
             'Rut':('Estudiante'),
+            "Semestre":("Número de evaluación"),
+
+            "sesiones":("N° de sesiones"),
+            "conducta":("Conducta observada"),
+            "antecedentes":("Antecedentes relevantes"),
 
             "IA1_ACIERTO":("Aciertos"),
             "IA1_ERROR":("Errores"),
@@ -656,7 +671,7 @@ class FormEVA2_02(forms.ModelForm):
 
 
             }
-        widgets : {"Escolaridad": forms.Textarea(attrs={"rows":1 ,"cols":50}),}
+        widgets : {"Escolaridad": forms.Textarea(attrs={"rows":1 ,"cols":4}),}
 
 
 class FormEVA2_03(forms.ModelForm):
@@ -674,7 +689,7 @@ Fieldset("",  #Seccion
 HTML(""" <center> DATOS GENERALES </center> """),#Titulo I2-F2
 HTML("""  <p></p> """), #espacio
 
-Field("Rut","Semestre","Año", "Curso","Escolaridad","Fecha")),
+Field("Rut","Semestre","Curso","Escolaridad","Fecha","sesiones","conducta","antecedentes")),
 
 HTML("""  <p></p> """), #espacio
 HTML(""" </center> """),#center F2
@@ -814,6 +829,11 @@ HTML(""" </center> """)),)#center
         exclude = ("user","Institucion")
         labels = {
             'Rut':('Estudiante'),
+            "Semestre":("Número de evaluación"),
+
+            "sesiones":("N° de sesiones"),
+            "conducta":("Conducta observada"),
+            "antecedentes":("Antecedentes relevantes"),
 
             "I_ACIERTO":("Aciertos"),
             "I_ERROR":("Errores"),
@@ -867,7 +887,7 @@ HTML(""" </center> """)),)#center
 
 
             }
-        widgets : {"Escolaridad": forms.Textarea(attrs={"rows":1 ,"cols":50}),}
+        widgets : {"Escolaridad": forms.Textarea(attrs={"rows":1 ,"cols":4}),}
 
 
 class FormEVA2_04(forms.ModelForm):
@@ -885,7 +905,7 @@ class FormEVA2_04(forms.ModelForm):
     HTML(""" <center> DATOS GENERALES </center> """),#Titulo I2-F2
     HTML("""  <p></p> """), #espacio
 
-    Field("Rut","Semestre","Año", "Curso","Escolaridad","Fecha")),
+    Field("Rut","Semestre","Curso","Escolaridad","Fecha","sesiones","conducta","antecedentes")),
 
     HTML("""  <p></p> """), #espacio
     HTML(""" </center> """),#center F2
@@ -1032,6 +1052,11 @@ class FormEVA2_04(forms.ModelForm):
         exclude = ("user","Institucion")
         labels = {
             'Rut':('Estudiante'),
+            "Semestre":("Número de evaluación"),
+
+            "sesiones":("N° de sesiones"),
+            "conducta":("Conducta observada"),
+            "antecedentes":("Antecedentes relevantes"),
 
             "I_ACIERTO":("Aciertos"),
             "I_ERROR":("Errores"),
@@ -1091,7 +1116,7 @@ class FormEVA2_04(forms.ModelForm):
 
 
             }
-        widgets : {"Escolaridad": forms.Textarea(attrs={"rows":1 ,"cols":50}),}
+        widgets : {"Escolaridad": forms.Textarea(attrs={"rows":1 ,"cols":4}),}
 
 
 
@@ -1110,7 +1135,7 @@ class FormEVA2_05(forms.ModelForm):
     HTML(""" <center> DATOS GENERALES </center> """),#Titulo I2-F2
     HTML("""  <p></p> """), #espacio
 
-    Field("Rut","Semestre","Año", "Curso","Escolaridad","Fecha")),
+    Field("Rut","Semestre","Curso","Escolaridad","Fecha","sesiones","conducta","antecedentes")),
 
     HTML("""  <p></p> """), #espacio
     HTML(""" </center> """),#center F2
@@ -1268,6 +1293,12 @@ class FormEVA2_05(forms.ModelForm):
         exclude = ("user","Institucion")
         labels = {
             'Rut':('Estudiante'),
+            "Semestre":("Número de evaluación"),
+
+
+            "sesiones":("N° de sesiones"),
+            "conducta":("Conducta observada"),
+            "antecedentes":("Antecedentes relevantes"),
 
             "I_ACIERTO":("Aciertos"),
             "I_ERROR":("Errores"),
@@ -1340,7 +1371,7 @@ class FormEVA2_05(forms.ModelForm):
 
 
             }
-        widgets : {"Escolaridad": forms.Textarea(attrs={"rows":1 ,"cols":50}),}
+        widgets : {"Escolaridad": forms.Textarea(attrs={"rows":1 ,"cols":4}),}
 
 class FormEVA2_06(forms.ModelForm):
     def __init__(self, Institucion, *args, **kwargs):
@@ -1357,7 +1388,7 @@ class FormEVA2_06(forms.ModelForm):
     HTML(""" <center> DATOS GENERALES </center> """),#Titulo I2-F2
     HTML("""  <p></p> """), #espacio
 
-    Field("Rut","Semestre","Año", "Curso","Escolaridad","Fecha")),
+    Field("Rut","Semestre","Curso","Escolaridad","Fecha","sesiones","conducta","antecedentes")),
 
     HTML("""  <p></p> """), #espacio
     HTML(""" </center> """),#center F2
@@ -1507,6 +1538,11 @@ class FormEVA2_06(forms.ModelForm):
         exclude = ("user","Institucion")
         labels = {
             'Rut':('Estudiante'),
+            "Semestre":("Número de evaluación"),
+
+            "sesiones":("N° de sesiones"),
+            "conducta":("Conducta observada"),
+            "antecedentes":("Antecedentes relevantes"),
 
             "II_ACIERTO":("Aciertos"),
             "II_ERROR":("Errores"),
@@ -1573,7 +1609,7 @@ class FormEVA2_06(forms.ModelForm):
 
 
             }
-        widgets : {"Escolaridad": forms.Textarea(attrs={"rows":1 ,"cols":50}),}
+        widgets : {"Escolaridad": forms.Textarea(attrs={"rows":1 ,"cols":4}),}
 
 
 
@@ -1592,7 +1628,7 @@ class FormEVA2_07(forms.ModelForm):
     HTML(""" <center> DATOS GENERALES </center> """),#Titulo I2-F2
     HTML("""  <p></p> """), #espacio
 
-    Field("Rut","Semestre","Año", "Curso","Escolaridad","Fecha")),
+    Field("Rut","Semestre","Curso","Escolaridad","Fecha","sesiones","conducta","antecedentes")),
 
     HTML("""  <p></p> """), #espacio
     HTML(""" </center> """),#center F2
@@ -1748,6 +1784,11 @@ class FormEVA2_07(forms.ModelForm):
         exclude = ("user","Institucion")
         labels = {
             'Rut':('Estudiante'),
+            "Semestre":("Número de evaluación"),
+
+            "sesiones":("N° de sesiones"),
+            "conducta":("Conducta observada"),
+            "antecedentes":("Antecedentes relevantes"),
 
             "I_ACIERTO":("Aciertos"),
             "I_ERROR":("Errores"),
@@ -1816,7 +1857,7 @@ class FormEVA2_07(forms.ModelForm):
 
 
             }
-        widgets : {"Escolaridad": forms.Textarea(attrs={"rows":1 ,"cols":50}),}
+        widgets : {"Escolaridad": forms.Textarea(attrs={"rows":1 ,"cols":4}),}
 
 
 class FormEVA2_08(forms.ModelForm):
@@ -1834,7 +1875,7 @@ class FormEVA2_08(forms.ModelForm):
     HTML(""" <center> DATOS GENERALES </center> """),#Titulo I2-F2
     HTML("""  <p></p> """), #espacio
 
-    Field("Rut","Semestre","Año", "Curso","Escolaridad","Fecha")),
+    Field("Rut","Semestre","Curso","Escolaridad","Fecha","sesiones","conducta","antecedentes")),
 
     HTML("""  <p></p> """), #espacio
     HTML(""" </center> """),#center F2
@@ -2007,6 +2048,11 @@ class FormEVA2_08(forms.ModelForm):
         exclude = ("user","Institucion")
         labels = {
             'Rut':('Estudiante'),
+            "Semestre":("Número de evaluación"),
+
+            "sesiones":("N° de sesiones"),
+            "conducta":("Conducta observada"),
+            "antecedentes":("Antecedentes relevantes"),
 
             "I_ACIERTO":("Aciertos"),
             "I_ERROR":("Errores"),
@@ -2100,7 +2146,7 @@ class FormEVA2_08(forms.ModelForm):
 
 
             }
-        widgets : {"Escolaridad": forms.Textarea(attrs={"rows":1 ,"cols":50}),}
+        widgets : {"Escolaridad": forms.Textarea(attrs={"rows":1 ,"cols":4}),}
 
 class FormEVA2_09(forms.ModelForm):
     def __init__(self, Institucion, *args, **kwargs):
@@ -2117,7 +2163,7 @@ class FormEVA2_09(forms.ModelForm):
     HTML(""" <center> DATOS GENERALES </center> """),#Titulo I2-F2
     HTML("""  <p></p> """), #espacio
 
-    Field("Rut","Semestre","Año", "Curso","Escolaridad","Fecha")),
+    Field("Rut","Semestre","Curso","Escolaridad","Fecha","sesiones","conducta","antecedentes")),
 
     HTML("""  <p></p> """), #espacio
     HTML(""" </center> """),#center F2
@@ -2284,6 +2330,12 @@ class FormEVA2_09(forms.ModelForm):
         exclude = ("user","Institucion")
         labels = {
             'Rut':('Estudiante'),
+            "Semestre":("Número de evaluación"),
+
+
+            "sesiones":("N° de sesiones"),
+            "conducta":("Conducta observada"),
+            "antecedentes":("Antecedentes relevantes"),
 
             "I_ACIERTO":("Aciertos"),
             "I_ERROR":("Errores"),
@@ -2364,7 +2416,7 @@ class FormEVA2_09(forms.ModelForm):
 
 
             }
-        widgets : {"Escolaridad": forms.Textarea(attrs={"rows":1 ,"cols":50}),}
+        widgets : {"Escolaridad": forms.Textarea(attrs={"rows":1 ,"cols":4}),}
 
 
 
@@ -2384,7 +2436,7 @@ class FormEVA2_10(forms.ModelForm):
     HTML(""" <center> DATOS GENERALES </center> """),#Titulo I2-F2
     HTML("""  <p></p> """), #espacio
 
-    Field("Rut","Semestre","Año", "Curso","Escolaridad","Fecha")),
+    Field("Rut","Semestre","Curso","Escolaridad","Fecha","sesiones","conducta","antecedentes")),
 
     HTML("""  <p></p> """), #espacio
     HTML(""" </center> """),#center F2
@@ -2542,6 +2594,11 @@ class FormEVA2_10(forms.ModelForm):
         exclude = ("user","Institucion")
         labels = {
             'Rut':('Estudiante'),
+            "Semestre":("Número de evaluación"),
+
+            "sesiones":("N° de sesiones"),
+            "conducta":("Conducta observada"),
+            "antecedentes":("Antecedentes relevantes"),
 
             "I_ACIERTO":("Aciertos"),
             "I_ERROR":("Errores"),
@@ -2616,4 +2673,4 @@ class FormEVA2_10(forms.ModelForm):
 
 
             }
-        widgets : {"Escolaridad": forms.Textarea(attrs={"rows":1 ,"cols":50}),}
+        widgets : {"Escolaridad": forms.Textarea(attrs={"rows":1 ,"cols":4}),}
